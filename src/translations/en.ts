@@ -58,7 +58,8 @@ const en: TranslationKeys = {
         {
           type: "Higher Education Degree",
           name: "Multiplatform Application Development",
-          institution: "Universidad Alfonso X el Sabio (Villanueva de la Cañada, Madrid)",
+          institution:
+            "Universidad Alfonso X el Sabio (Villanueva de la Cañada, Madrid)",
           period: "September 2020 - June 2022",
         },
         {
@@ -153,9 +154,11 @@ const en: TranslationKeys = {
           "Neon",
           "PostgreSQL",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        code: "https://github.com/VictorPotenciano/bar-app",
       },
     ],
     button: "View Project",
+    code: "View Code",
   },
   contact: {
     title: "Contact",
