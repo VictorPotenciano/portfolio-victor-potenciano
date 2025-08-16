@@ -48,7 +48,7 @@ const en: TranslationKeys = {
         {
           name: "Responsive Web Design Certificate",
           page: "freeCodeCamp.org",
-          url: "https://www.freecodecamp.org/espanol/certification/VictorPotenciano/responsive-web-design",
+          url: "https://www.freecodecamp.org/espanol/certification/victorpotenciano/responsive-web-design",
         },
       ],
     },
