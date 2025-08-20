@@ -127,7 +127,7 @@ const ProjectsSection = () => {
               },
             },
           }}
-          className="grid gap-8 lg:grid-cols-2 w-full mx-auto justify-center"
+          className="grid gap-8 lg:grid-cols-3 grid-cols-1 w-full mx-auto justify-center"
         >
           {t.projects.projects.map((project, index) => (
             <motion.div

@@ -10,6 +10,7 @@ const technologyColorMap: Record<string, string> = {
   Prisma: "bg-pink-600",
   Neon: "bg-indigo-600",
   PostgreSQL: "bg-teal-600",
+  "NextAuth.js": "bg-black",
 };
 
 const en: TranslationKeys = {
@@ -158,6 +159,24 @@ const en: TranslationKeys = {
           "PostgreSQL",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
         code: "https://github.com/VictorPotenciano/bar-app",
+      },
+      {
+        name: "Task Manager",
+        description1:
+          "It is a task manager where users can log in to manage their own tasks.",
+        description2:
+          "It allows filtering tasks by status — all, pending, or completed — and grouping them by categories. In addition, it provides a full set of operations (create, read, update, delete) for both tasks and categories, giving users complete control over content management.",
+        url: "https://gestor-de-tareas-app.vercel.app/",
+        technologies: [
+          "Next.js",
+          "NextAuth.js",
+          "Tailwind CSS",
+          "TypeScript",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        code: "https://github.com/VictorPotenciano/gestor-de-tareas-app",
       },
     ],
     button: "View Project",

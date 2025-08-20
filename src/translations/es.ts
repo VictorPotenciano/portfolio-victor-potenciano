@@ -10,6 +10,7 @@ const technologyColorMap: Record<string, string> = {
   Prisma: "bg-pink-600",
   Neon: "bg-indigo-600",
   PostgreSQL: "bg-teal-600",
+  "NextAuth.js": "bg-black",
 };
 
 const es: TranslationKeys = {
@@ -158,6 +159,24 @@ const es: TranslationKeys = {
           "PostgreSQL",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
         code: "https://github.com/VictorPotenciano/bar-app",
+      },
+      {
+        name: "Gestor de Tareas",
+        description1:
+          "Se trata de un gestor de tareas en el que los usuarios pueden iniciar sesión para administrar sus propias tareas.",
+        description2:
+          "Permite filtrar las tareas según estado —todas, pendientes o terminadas— y agruparlas por categorías. Además, ofrece un conjunto completo de operaciones (crear, leer, actualizar, eliminar) tanto para las tareas como para las categorías, lo cual brinda un control total sobre la gestión de contenido.",
+        url: "https://gestor-de-tareas-app.vercel.app/",
+        technologies: [
+          "Next.js",
+          "NextAuth.js",
+          "Tailwind CSS",
+          "TypeScript",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        code: "https://github.com/VictorPotenciano/gestor-de-tareas-app",
       },
     ],
     button: "Ver Proyecto",
