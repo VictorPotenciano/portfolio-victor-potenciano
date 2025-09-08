@@ -134,7 +134,7 @@ const en: TranslationKeys = {
           "A complete web application for fruit and vegetable sales with an integrated administrative management system.",
         description2:
           "Includes advanced features for managing products, categories, special offers, order management, and user management, with a complete control panel for administrators.",
-        url: "https://tfg-frontend-victor-potenciano.vercel.app/",
+        url: "https://frutas-calix.vercel.app/",
         technologies: [
           "Next.js",
           "Tailwind CSS",
