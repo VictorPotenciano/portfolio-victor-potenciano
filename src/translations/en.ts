@@ -33,6 +33,7 @@ const en: TranslationKeys = {
     contactMe: "Contact Me!",
     linkedinAlt: "Link to LinkedIn",
     githubAlt: "Link to GitHub",
+    whatsappAlt: "Link to WhatsApp",
   },
   about: {
     title: "About me?",

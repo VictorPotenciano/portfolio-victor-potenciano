@@ -47,6 +47,7 @@ export interface TranslationKeys {
     contactMe: string;
     linkedinAlt: string;
     githubAlt: string;
+    whatsappAlt: string;
   };
   about: {
     title: string;

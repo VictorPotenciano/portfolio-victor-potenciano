@@ -10,6 +10,8 @@ import en from "@/translations/en";
 import { useLanguage } from "@/context/LanguajeContext";
 import { TranslationKeys } from "../../typing";
 import { motion, Variants } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const translations: { [key: string]: TranslationKeys } = { es, en };
 
@@ -161,6 +163,24 @@ const HomeSection = () => {
               whileTap={{ scale: 0.9 }}
             >
               <Github className="w-10 h-10" />
+            </motion.div>
+          </Link>
+          {/* WhatsApp */}
+          <Link
+            href="https://wa.me/+34660529420"
+            aria-label={t.home.whatsappAlt}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <motion.div
+              whileHover={{ y: -5, scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                className="w-10 h-10"
+                style={{ fontSize: "2.5rem" }}
+              />
             </motion.div>
           </Link>
         </motion.div>
