@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://portfolio-victor-potenciano.vercel.app
+
+# Sitemaps
+Sitemap: https://portfolio-victor-potenciano.vercel.app/sitemap.xml
