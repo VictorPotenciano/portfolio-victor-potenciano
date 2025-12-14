@@ -22,7 +22,7 @@
     "country-flag-icons": "^1.5.19",
     "lucide-react": "^0.539.0",
     "motion": "^12.23.12",
-    "next": "15.4.6",
+    "next": "15.4.10",
     "next-sitemap": "^4.2.3",
     "nextjs-simple-typewriter": "^5.2.2",
     "nodemailer": "^7.0.5",
