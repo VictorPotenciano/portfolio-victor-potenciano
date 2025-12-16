@@ -137,7 +137,6 @@ const en: TranslationKeys = {
           "A complete web application for fruit and vegetable sales with an integrated administrative management system.",
         description2:
           "Includes advanced features for managing products, categories, special offers, order management, and user management, with a complete control panel for administrators.",
-        url: "https://frutas-calix.vercel.app/",
         technologies: [
           "Next.js",
           "Tailwind CSS",
@@ -146,6 +145,7 @@ const en: TranslationKeys = {
           "Neon",
           "PostgreSQL",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        inDevelopment: "In Development",
       },
       {
         name: "Bar El Rincon",
@@ -196,7 +196,7 @@ const en: TranslationKeys = {
           "Neon",
           "PostgreSQL",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
-        inDevelopment: true,
+        inDevelopment: "In Development",
       },
       {
         name: "Jsouto Peluqueros",
@@ -214,7 +214,7 @@ const en: TranslationKeys = {
           "PostgreSQL",
           "Vercel Blob",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
-        inDevelopment: true,
+        inDevelopment: "In Development",
       },
       {
         name: "Rental House",
@@ -233,7 +233,7 @@ const en: TranslationKeys = {
           "Stripe",
           "Vercel Blob",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
-        inDevelopment: true,
+        inDevelopment: "In Development",
       },
     ],
     button: "View Project",

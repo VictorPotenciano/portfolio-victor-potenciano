@@ -29,7 +29,7 @@ export interface Project {
   url?: string;
   technologies: { name: string; color: string }[];
   code?: string;
-  inDevelopment?: boolean;
+  inDevelopment?: string;
 }
 
 export interface TranslationKeys {
@@ -88,7 +88,7 @@ export interface TranslationKeys {
     projects: Project[];
     button: string;
     code: string;
-    inDevelopment?: boolean;
+    inDevelopment?: string;
   };
   footer: {
     rigths: string;

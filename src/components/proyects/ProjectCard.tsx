@@ -26,7 +26,7 @@ const ProjectCard = ({ project, t }: ProjectCardProps) => {
             </h3>
             {project.inDevelopment && (
               <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
-                {t.projects.inDevelopment || "En desarrollo"}
+                {project.inDevelopment}
               </Badge>
             )}
           </div>
@@ -80,7 +80,7 @@ const ProjectCard = ({ project, t }: ProjectCardProps) => {
             </p>
             {project.inDevelopment && (
               <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white mt-2">
-                {t.projects.inDevelopment || "En desarrollo"}
+                {project.inDevelopment}
               </Badge>
             )}
           </div>
