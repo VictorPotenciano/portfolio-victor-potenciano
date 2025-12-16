@@ -57,7 +57,7 @@ const HomeSection = () => {
   return (
     <section
       id="home"
-      className="pt-20 pb-16 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white flex items-center justify-center min-h-screen relative overflow-hidden"
+      className="pt-20 pb-16 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white flex items-center justify-center min-h-screen relative"
     >
       <div className="absolute inset-0 bg-black/20"></div>
 

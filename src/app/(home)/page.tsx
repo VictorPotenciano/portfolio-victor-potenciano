@@ -2,7 +2,7 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import HomeSection from "@/components/HomeSection";
-import ProjectsSection from "@/components/ProjectsSection";
+import ProjectsSection from "@/components/proyects/ProjectsSection";
 import Head from "next/head";
 
 export default function Home() {

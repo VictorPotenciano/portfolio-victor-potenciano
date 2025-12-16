@@ -26,9 +26,10 @@ export interface Project {
   name: string;
   description1: string;
   description2: string;
-  url: string;
+  url?: string;
   technologies: { name: string; color: string }[];
   code?: string;
+  inDevelopment?: boolean;
 }
 
 export interface TranslationKeys {
@@ -87,6 +88,7 @@ export interface TranslationKeys {
     projects: Project[];
     button: string;
     code: string;
+    inDevelopment?: boolean;
   };
   footer: {
     rigths: string;

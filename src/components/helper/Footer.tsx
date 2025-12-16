@@ -6,6 +6,8 @@ import Link from "next/link";
 import es from "@/translations/es";
 import en from "@/translations/en";
 import { TranslationKeys } from "../../../typing";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const translations: { [key: string]: TranslationKeys } = { es, en };
 
@@ -33,6 +35,19 @@ const Footer = () => {
               className="hover:scale-110 transition-transform duration-300"
             >
               <Github className="w-8 h-8 opacity-80 hover:opacity-100" />
+            </Link>
+            <Link
+              href="https://wa.me/+34660529420"
+              aria-label={t.home.whatsappAlt}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-transform duration-300"
+            >
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                className="w-8 h-8 opacity-80 hover:opacity-100"
+                style={{ fontSize: "2rem" }}
+              />
             </Link>
           </div>
           <p className="text-white">{t.footer.rigths}</p>

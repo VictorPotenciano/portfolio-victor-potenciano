@@ -11,6 +11,8 @@ const technologyColorMap: Record<string, string> = {
   Neon: "bg-indigo-600",
   PostgreSQL: "bg-teal-600",
   "NextAuth.js": "bg-black",
+  "Vercel Blob": "bg-gray-600",
+  Stripe: "bg-slate-700",
 };
 
 const en: TranslationKeys = {
@@ -178,6 +180,60 @@ const en: TranslationKeys = {
           "PostgreSQL",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
         code: "https://github.com/VictorPotenciano/gestor-de-tareas-app",
+      },
+      {
+        name: "Wedding Invitation",
+        description1:
+          "An elegant web application for a wedding, with pages dedicated to event information and RSVP confirmation.",
+        description2:
+          "It includes a form for guests to confirm their attendance, as well as an exclusive administrative panel for the bride and groom, where they can view all confirmations, search by guest name and apply various filters.",
+        technologies: [
+          "Next.js",
+          "NextAuth.js",
+          "Tailwind CSS",
+          "TypeScript",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        inDevelopment: true,
+      },
+      {
+        name: "Jsouto Peluqueros",
+        description1:
+          "Complete website for a hair salon with detailed information and appointment booking system.",
+        description2:
+          "It features informational pages about the hair salon, a booking module where clients enter their details, select services, date, and time. It also includes a blog and an administrative panel for managing bookings, blog posts, available times, and services offered. It uses Vercel Blob for image management.",
+        technologies: [
+          "Next.js",
+          "NextAuth.js",
+          "Tailwind CSS",
+          "TypeScript",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+          "Vercel Blob",
+        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        inDevelopment: true,
+      },
+      {
+        name: "Rental House",
+        description1:
+          "Web application for holiday rental of a house, with detailed information and booking system.",
+        description2:
+          "It presents property information with images (using Vercel Blob), a booking form with Stripe payment integration, and user registration and login. It also includes an administrative panel to manage property information, registered users, and all bookings.",
+        technologies: [
+          "Next.js",
+          "NextAuth.js",
+          "Tailwind CSS",
+          "TypeScript",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+          "Stripe",
+          "Vercel Blob",
+        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        inDevelopment: true,
       },
     ],
     button: "View Project",
