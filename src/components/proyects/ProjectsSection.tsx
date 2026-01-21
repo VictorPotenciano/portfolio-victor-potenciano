@@ -44,7 +44,7 @@ const ProjectsSection = () => {
       className="py-16 lg:py-36 bg-gradient-to-b from-gray-50 to-white"
     >
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Animación de título con efecto de onda */}
+        {/* Titulo */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

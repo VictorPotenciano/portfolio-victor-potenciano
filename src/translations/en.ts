@@ -13,6 +13,7 @@ const technologyColorMap: Record<string, string> = {
   "NextAuth.js": "bg-black",
   "Vercel Blob": "bg-gray-600",
   Stripe: "bg-slate-700",
+  Vercel: "bg-gray-800",
 };
 
 const en: TranslationKeys = {
@@ -41,11 +42,11 @@ const en: TranslationKeys = {
     title: "About me?",
     subtitle: "Want to know more",
     description1:
-      "Passionate Full Stack Developer focused on creating innovative and efficient digital solutions. With experience in HTML, CSS, JavaScript, Angular, Next.js, SpringBoot, Laravel, MySQL and PostgreSQL, I specialize in developing modern and scalable web applications.",
+      "Full Stack Developer specialized in creating robust and scalable digital solutions. Focused on modern architectures for both frontend and backend to develop high-performance web applications.",
     description2:
-      "My approach focuses on combining functional design with an optimized user experience, always looking to learn and apply the latest technologies.",
+      "My professional approach integrates efficient system design with intuitive interfaces, prioritizing code quality and end-user experience. Oriented towards implementing best practices and agile development methodologies.",
     description3:
-      "Additionally, I have skills in tools like Git, Figma and Postman, and I'm committed to continuously developing my competencies to deliver high-quality projects.",
+      "Committed to continuous learning of emerging technologies and technical excellence in every project. Proven ability to work in collaborative environments and deliver high-impact solutions.",
     certificates: {
       title: "Certificates",
       items: [
@@ -53,6 +54,35 @@ const en: TranslationKeys = {
           name: "Responsive Web Design Certificate",
           page: "freeCodeCamp.org",
           url: "https://www.freecodecamp.org/espanol/certification/victorpotenciano/responsive-web-design",
+        },
+      ],
+    },
+    experience: {
+      title: "Work Experience",
+      jobs: [
+        {
+          position: "INTERN",
+          company: "BBVA NEXT TECHNOLOGIES",
+          location: "Madrid",
+          period: "April 2022 – June 2022",
+          description:
+            "Development of web components using HTML, CSS and Javascript in internal projects. Collaboration with the team to implement user interface improvements.",
+        },
+        {
+          position: "WEB DEVELOPER",
+          company: "FUNCIONALIA",
+          location: "Arroyomolinos, Madrid",
+          period: "November 2024 – March 2025",
+          description:
+            "Maintenance and development of websites using WordPress, HTML, Bootstrap and PHP.",
+        },
+        {
+          position: "INTERN",
+          company: "FUNCIONALIA",
+          location: "Arroyomolinos, Madrid",
+          period: "March 2025 – June 2025",
+          description:
+            "Maintenance and development of websites using WordPress, HTML, Bootstrap and PHP.",
         },
       ],
     },
@@ -104,7 +134,7 @@ const en: TranslationKeys = {
           { name: "MongoDB", level: "Beginner" },
           { name: "SpringBoot", level: "Beginner" },
           { name: "Java", level: "Beginner" },
-          { name: "Prisma", level: "Beginner" },
+          { name: "Prisma", level: "Intermediate" },
           { name: "Neon", level: "Beginner" },
           { name: "PHP", level: "Beginner" },
           { name: "Laravel", level: "Intermediate" },
@@ -122,6 +152,7 @@ const en: TranslationKeys = {
           { name: "WordPress", level: "Intermediate" },
           { name: "Vercel", level: "Intermediate" },
           { name: "AWS", level: "Beginner" },
+          { name: "Stripe", level: "Beginner" },
         ],
       },
     ],
@@ -131,6 +162,21 @@ const en: TranslationKeys = {
     subtitle: "Discover my",
     techUsed: "Technologies used:",
     projects: [
+      {
+        name: "Personal Portfolio",
+        description1:
+          "Professional web portfolio with modern design, interactive sections and integrated contact system.",
+        description2:
+          "This personal portfolio showcases my professional experience, technical skills, and completed projects. The application features a modern, fully responsive interface organized into clearly defined sections: a presentation with dynamic text animations, a professional biography, a comprehensive list of technologies with proficiency levels categorized by Frontend, Backend, and Tools, a project gallery with interactive cards displaying detailed information in modals, an education and certifications section, and a functional contact form. The design implements a light/dark theme system, smooth navigation between sections with animated scrolling, and visual effects that enhance the user experience. Projects are presented with the technologies used, labeled with custom color codes, and include direct links to live demos and GitHub repositories. It also includes functionality for downloading my CV and links to my professional profiles. The portfolio is built with Next.js and TypeScript, styled with Tailwind CSS to ensure a consistent and professional design that reflects my capabilities as a full-stack developer.",
+        url: "https://portfolio-victor-potenciano.vercel.app/",
+        technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"].map(
+          (tech) => ({
+            name: tech,
+            color: technologyColorMap[tech],
+          })
+        ),
+        code: "https://github.com/VictorPotenciano/portfolio-victor-potenciano",
+      },
       {
         name: "FrutasCalix",
         description1:
@@ -148,28 +194,12 @@ const en: TranslationKeys = {
         inDevelopment: "In Development",
       },
       {
-        name: "Bar El Rincon",
-        description1: "A modern and responsive landing page for a bar.",
-        description2:
-          "Includes sections such as menu, gallery, menu, events, reservations, and contact, with animations and a attractive design to promote the establishment and attract customers. Simple but effective project.",
-        url: "https://bar-elrincon-app.vercel.app/",
-        technologies: [
-          "Next.js",
-          "Tailwind CSS",
-          "TypeScript",
-          "Prisma",
-          "Neon",
-          "PostgreSQL",
-        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
-        code: "https://github.com/VictorPotenciano/bar-app",
-      },
-      {
-        name: "Task Manager",
+        name: "Ibernova Soluciones",
         description1:
-          "It is a task manager where users can log in to manage their own tasks.",
+          "Complete property rental platform with booking system, integrated payments and administrative panel.",
         description2:
-          "It allows filtering tasks by status — all, pending, or completed — and grouping them by categories. In addition, it provides a full set of operations (create, read, update, delete) for both tasks and categories, giving users complete control over content management.",
-        url: "https://gestor-de-tareas-app.vercel.app/",
+          "A complete web application for managing a rental property in Villaviciosa de Odón. The platform allows users to explore the property with an image gallery hosted on Vercel Blob, check availability, and securely make bookings through Stripe integration for payment processing. The system includes user authentication implemented with NextAuth.js, enabling registration and login. Users can manage their bookings from their personal panel, while the administrator has a comprehensive dashboard to control property information, manage registered users, and monitor all active bookings. The application is built with Next.js and TypeScript, ensuring robust and maintainable code. Responsive design is achieved using Tailwind CSS, while the PostgreSQL database (hosted on Neon) is managed through Prisma ORM.",
+        url: "https://www.ibernovasoluciones.es/",
         technologies: [
           "Next.js",
           "NextAuth.js",
@@ -178,15 +208,18 @@ const en: TranslationKeys = {
           "Prisma",
           "Neon",
           "PostgreSQL",
+          "Stripe",
+          "Vercel Blob",
+          "Vercel",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
-        code: "https://github.com/VictorPotenciano/gestor-de-tareas-app",
       },
       {
-        name: "Wedding Invitation",
+        name: "Digital Wedding Invitation",
         description1:
-          "An elegant web application for a wedding, with pages dedicated to event information and RSVP confirmation.",
+          "Elegant wedding website with RSVP, tourist recommendations, and an administrative panel with advanced filters.",
         description2:
-          "It includes a form for guests to confirm their attendance, as well as an exclusive administrative panel for the bride and groom, where they can view all confirmations, search by guest name and apply various filters.",
+          "A complete web application designed for weddings. The site offers a romantic and elegant visual experience where guests can access all the necessary information about the event: detailed ceremony and reception times, the exact location with an interactive map, information about transportation (buses) for guests, and an RSVP form. It includes a comprehensive recommendations section with nearby hotels and accommodations, hair and beauty salons for getting ready, top restaurants in the area, and a tourist guide with must-see places to visit in Toledo. The application also features a gift section where guests can easily contribute financially. It incorporates a complete administrative dashboard for the couple, where they can view all RSVPs in real time with custom filters: guests who RSVP, those who need transportation, people with allergies or dietary restrictions, and the status of responses. This panel allows for efficient management of event logistics and facilitates catering and transportation planning. The responsive design is optimized for mobile devices, with a carefully crafted aesthetic that combines photos of the couple, romantic decorative elements, and intuitive navigation through the different sections.",
+        url: "https://web-boda-zeta.vercel.app/",
         technologies: [
           "Next.js",
           "NextAuth.js",
@@ -195,8 +228,9 @@ const en: TranslationKeys = {
           "Prisma",
           "Neon",
           "PostgreSQL",
+          "Vercel",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
-        inDevelopment: "In Development",
+        code: "https://github.com/VictorPotenciano/web-boda",
       },
       {
         name: "Jsouto Peluqueros",
@@ -213,15 +247,35 @@ const en: TranslationKeys = {
           "Neon",
           "PostgreSQL",
           "Vercel Blob",
+          "Vercel",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
         inDevelopment: "In Development",
       },
       {
-        name: "Rental House",
+        name: "Bar El Rincon",
         description1:
-          "Web application for holiday rental of a house, with detailed information and booking system.",
+          "Complete landing page for a fictional bar with dynamic menu, reservation system and event management.",
         description2:
-          "It presents property information with images (using Vercel Blob), a booking form with Stripe payment integration, and user registration and login. It also includes an administrative panel to manage property information, registered users, and all bookings.",
+          "This demo project simulates a complete website for a bar specializing in mixology and gastronomy. The application includes a modern landing page with multiple sections: a business introduction, a daily menu configurable from a database, a full menu of drinks and dishes, an image gallery, information on recurring events, and a functional reservation system. The reservation form allows users to select the date, time, number of guests, and add comments. The application uses Prisma with PostgreSQL (Neon) to manage the dynamic menu content and reservations. The responsive design, implemented with Tailwind CSS, offers smooth navigation and subtle animations that enhance the user experience. It includes all the typical sections of a business website: opening hours, contact information, location, and social media links, demonstrating full-stack capabilities in web application development for businesses.",
+        url: "https://bar-elrincon-app.vercel.app/",
+        technologies: [
+          "Next.js",
+          "Tailwind CSS",
+          "TypeScript",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+          "Vercel",
+        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        code: "https://github.com/VictorPotenciano/bar-app",
+      },
+      {
+        name: "Task Manager",
+        description1:
+          "Web application for task management with user authentication, advanced filters, and customizable category organization.",
+        description2:
+          "A complete task management system with secure authentication via NextAuth.js. Users can register and log in to access their personal workspace to manage their tasks privately. The application offers full CRUD functionality for both tasks and custom categories, allowing users to create, edit, delete, and view items according to their needs. It includes a filtering system that allows users to view all tasks, only pending tasks, or only completed tasks, facilitating organization and progress tracking. Tasks can be grouped into user-defined categories, providing a flexible structure adaptable to different types of projects or work areas. The PostgreSQL database, managed with Prisma, securely stores all user, task, and category information. The responsive design, implemented with Tailwind CSS, ensures an optimal experience on both mobile and desktop devices, making task management accessible from anywhere.",
+        url: "https://gestor-de-tareas-app.vercel.app/",
         technologies: [
           "Next.js",
           "NextAuth.js",
@@ -230,10 +284,9 @@ const en: TranslationKeys = {
           "Prisma",
           "Neon",
           "PostgreSQL",
-          "Stripe",
-          "Vercel Blob",
+          "Vercel",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
-        inDevelopment: "In Development",
+        code: "https://github.com/VictorPotenciano/gestor-de-tareas-app",
       },
     ],
     button: "View Project",
@@ -251,7 +304,7 @@ const en: TranslationKeys = {
     messageSend: "Message sent!",
   },
   footer: {
-    rigths: "Copyright © 2025. All rights reserved.",
+    rigths: "All rights reserved.",
   },
 };
 

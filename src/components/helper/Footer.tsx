@@ -50,7 +50,9 @@ const Footer = () => {
               />
             </Link>
           </div>
-          <p className="text-white">{t.footer.rigths}</p>
+          <p className="text-white">
+            Copyright © {new Date().getFullYear()}. {t.footer.rigths}
+          </p>
         </div>
       </div>
     </footer>

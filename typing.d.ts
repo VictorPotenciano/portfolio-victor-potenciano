@@ -32,6 +32,14 @@ export interface Project {
   inDevelopment?: string;
 }
 
+export interface Jobs {
+  position: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string;
+}
+
 export interface TranslationKeys {
   navbar: {
     home: string;
@@ -59,6 +67,10 @@ export interface TranslationKeys {
     certificates: {
       title: string;
       items: Certificate[];
+    };
+    experience: {
+      title: string;
+      jobs: Jobs[];
     };
     education: {
       title: string;
