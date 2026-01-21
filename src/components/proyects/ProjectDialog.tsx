@@ -64,7 +64,7 @@ const ProjectDialog = ({
                     >
                       <Badge className="bg-gradient-to-r from-yellow-500 via-orange-500 to-orange-600 text-white shadow-md hover:shadow-lg transition-shadow border-0 px-3 py-1">
                         <Sparkles className="w-3 h-3 mr-1" />
-                        {t.projects.inDevelopment || "En desarrollo"}
+                        {t.projects.projects[selectedProject].inDevelopment}
                       </Badge>
                     </motion.div>
                   )}
