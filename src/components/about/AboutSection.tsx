@@ -66,13 +66,14 @@ const AboutSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ amount: 0.3 }}
+          viewport={{ amount: 0.1, once: true }}
           className="text-center mb-12 lg:mb-16"
         >
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
             className="text-lg md:text-xl text-gray-600 mb-2"
           >
             {t.about.subtitle}
@@ -81,6 +82,7 @@ const AboutSection = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
             className="text-4xl pb-2 md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
           >
             {t.about.title}
@@ -89,6 +91,7 @@ const AboutSection = () => {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
             className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mt-4 rounded-full origin-left"
           />
         </motion.div>
@@ -96,7 +99,7 @@ const AboutSection = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.3 }}
+          viewport={{ amount: 0.05, once: true }}
           variants={staggerContainer}
           className="max-w-6xl mx-auto space-y-8"
         >

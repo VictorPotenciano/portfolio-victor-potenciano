@@ -25,7 +25,7 @@ const ExperienceCard = ({ cardVariants, t }: ExperienceCardProps) => {
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
               transition={{ type: "spring", stiffness: 180, delay: 0.3 }}
-              viewport={{ amount: 0.4 }}
+              viewport={{ once: false, amount: 0.4 }}
               className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg mb-4 sm:mb-6 ring-4 sm:ring-8 ring-purple-100/40"
             >
               <Briefcase className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
@@ -55,7 +55,7 @@ const ExperienceCard = ({ cardVariants, t }: ExperienceCardProps) => {
                     duration: 0.5,
                     type: "spring",
                   }}
-                  viewport={{ amount: 0.3 }}
+                  viewport={{ once: false, amount: 0.3 }}
                   className="relative group"
                 >
                   {/* Círculo en la línea */}

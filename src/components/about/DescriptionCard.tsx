@@ -19,7 +19,7 @@ const DescriptionCard = ({ cardVariants, t }: DescriptionCardProps) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            viewport={{ amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             className="text-gray-700 leading-relaxed text-lg mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-purple-600 first-letter:float-left first-letter:mr-3"
           >
             {t.about.description1}
@@ -28,7 +28,7 @@ const DescriptionCard = ({ cardVariants, t }: DescriptionCardProps) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            viewport={{ amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             className="text-gray-700 leading-relaxed text-lg mb-6"
           >
             {t.about.description2}
@@ -37,7 +37,7 @@ const DescriptionCard = ({ cardVariants, t }: DescriptionCardProps) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 1.0 }}
-            viewport={{ amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             className="text-gray-700 leading-relaxed text-lg"
           >
             {t.about.description3}

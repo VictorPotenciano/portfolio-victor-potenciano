@@ -17,7 +17,7 @@ const EducationCard = ({ cardVariants, t }: EducationCardProps) => {
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ type: "spring", delay: 0.4 }}
-            viewport={{ amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             className="text-center mb-8"
           >
             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -36,7 +36,7 @@ const EducationCard = ({ cardVariants, t }: EducationCardProps) => {
                 initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 + index * 0.2 }}
-                viewport={{ amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 className={`border-l-4 ${
                   index % 2 === 0
                     ? "border-purple-500 hover:bg-purple-50"

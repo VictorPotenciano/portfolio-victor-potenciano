@@ -18,9 +18,8 @@ const CertificateCard = ({ cardVariants, t }: CertificateCardProps) => {
       <CardHeader className="mt-6">
         <motion.div
           initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          transition={{ type: "spring", delay: 0.4 }}
-          viewport={{ amount: 0.3 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", delay: 0.2, duration: 0.5 }}
           className="text-center mb-8"
         >
           <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -37,9 +36,8 @@ const CertificateCard = ({ cardVariants, t }: CertificateCardProps) => {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.15 }}
-              viewport={{ amount: 0.3 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
               className="mb-4"
             >
               <Link
