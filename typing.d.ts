@@ -1,3 +1,9 @@
+export interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export interface Certificate {
   name: string;
   page: string;

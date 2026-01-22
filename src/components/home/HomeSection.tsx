@@ -3,12 +3,12 @@
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Typewriter } from "nextjs-simple-typewriter";
 import es from "@/translations/es";
 import en from "@/translations/en";
 import { useLanguage } from "@/context/LanguajeContext";
-import { TranslationKeys } from "../../typing";
+import { TranslationKeys } from "../../../typing";
 import { motion, Variants } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
