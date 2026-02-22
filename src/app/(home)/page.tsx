@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Victor Potenciano - Portfolio Desarrollador Web",
     description: "Explora mis proyectos y habilidades como desarrollador web.",
     url: "https://portfolio-victor-potenciano.vercel.app",
-    siteName: "Victor Potenciano Portfolio",
+    siteName: "Victor Potenciano",
     images: [
       {
         url: "/fotoperfil.jpg",

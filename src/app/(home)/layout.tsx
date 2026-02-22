@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-victor-potenciano.vercel.app"),
+  applicationName: "Victor Potenciano Portfolio",
   robots: {
     index: true,
     follow: true,
