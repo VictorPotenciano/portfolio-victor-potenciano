@@ -58,6 +58,7 @@ const HomeSection = () => {
     <section
       id="home"
       className="pt-20 pb-16 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white flex items-center justify-center min-h-screen relative"
+      aria-label="Inicio - Victor Potenciano"
     >
       <div className="absolute inset-0 bg-black/20"></div>
 
@@ -78,7 +79,7 @@ const HomeSection = () => {
         >
           <Image
             src="/fotoperfil.jpg"
-            alt="Foto de perfil de Victor Potenciano"
+            alt="Victor Potenciano - Desarrollador Web Full Stack"
             priority
             width={300}
             height={300}
@@ -91,7 +92,15 @@ const HomeSection = () => {
           <p className="text-lg md:text-xl mb-2 opacity-90">
             {t.home.greeting}
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-2 mb-6">
+          
+          <h1 className="sr-only">
+            Victor Potenciano - Desarrollador Web Full Stack
+          </h1>
+
+          <div
+            aria-hidden="true"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mt-2 mb-6"
+          >
             <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
               <Typewriter
                 words={t.home.titles}
@@ -103,7 +112,7 @@ const HomeSection = () => {
                 delaySpeed={1000}
               />
             </span>
-          </h1>
+          </div>
         </motion.div>
 
         {/* Botones */}

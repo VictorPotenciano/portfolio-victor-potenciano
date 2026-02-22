@@ -163,11 +163,11 @@ const es: TranslationKeys = {
     techUsed: "Tecnologías utilizadas:",
     projects: [
       {
-        name: "Portfolio Personal",
+        name: "Mi Portfolio Personal",
         description1:
           "Portfolio web profesional con diseño moderno, secciones interactivas y sistema de contacto integrado.",
         description2:
-          "Portfolio personal desarrollado para mostrar mi trayectoria profesional, habilidades técnicas y proyectos realizados. La aplicación cuenta con una interfaz moderna y completamente responsive, organizada en secciones claramente diferenciadas: presentación con animaciones de texto dinámico, biografía profesional, listado completo de tecnologías con niveles de dominio categorizados por Frontend, Backend y Herramientas, galería de proyectos con tarjetas interactivas que muestran información detallada en modales, sección de educación y certificaciones, y formulario de contacto funcional. El diseño implementa un sistema de tema claro/oscuro, navegación suave entre secciones con scroll animado, y efectos visuales que mejoran la experiencia de usuario. Los proyectos se presentan con tecnologías utilizadas etiquetadas con códigos de color personalizados, enlaces directos a demos en vivo y repositorios de GitHub. Incluye funcionalidad de descarga de CV y enlaces a perfiles profesionales. El portfolio está construido con Next.js y TypeScript, estilizado con Tailwind CSS para garantizar un diseño coherente y profesional que refleja mis capacidades como desarrollador full-stack.",
+          "Portfolio personal desarrollado para mostrar mi trayectoria profesional, habilidades técnicas y proyectos realizados. La aplicación cuenta con una interfaz moderna y completamente responsive, organizada en secciones diferenciadas: presentación con animaciones de texto dinámico, biografía profesional, listado completo de tecnologías con niveles de dominio categorizados por Frontend, Backend y Herramientas, galería de proyectos con tarjetas interactivas que muestran información detallada en modales, sección de educación y certificaciones, y formulario de contacto funcional. La web implementa un sistema de traducción instantaneo de español e ingles, navegación suave entre secciones con scroll animado, y efectos visuales que mejoran la experiencia de usuario. Los proyectos se presentan con tecnologías utilizadas etiquetadas con códigos de color personalizados, enlaces directos a demos en vivo y repositorios de GitHub. Incluye funcionalidad de descarga de CV y enlaces a perfiles profesionales. El portfolio está construido con Next.js y TypeScript, estilizado con Tailwind CSS para garantizar un diseño coherente y profesional que refleja mis capacidades como desarrollador full-stack.",
         url: "https://portfolio-victor-potenciano.vercel.app/",
         technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"].map(
           (tech) => ({
@@ -249,6 +249,28 @@ const es: TranslationKeys = {
           "Vercel",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
         inDevelopment: "En Desarrollo",
+      },
+      {
+        name: "Gestor de Proyectos – ProjectHub",
+        description1: "Aplicación web para la gestión de proyectos.",
+        description2:
+          "Gestor de proyectos desarrollado con Next.js y TypeScript. La aplicación ofrece una solución completa para organizar, rastrear y administrar proyectos de forma eficiente. Permite crear proyectos, generar y asignar tareas a miembros del proyecto, registrar pagos, añadir comentarios al proyecto, adjuntar archivos, e invitar y agregar miembros al equipo. Cada usuario tiene control total sobre los proyectos que son suyos o en los que participa como miembro. Además, cuenta con un sistema de notificaciones en tiempo real que avisa de cualquier modificación, actualización o actividad importante en los proyectos. Presenta un diseño limpio y profesional gracias a Tailwind CSS, y está optimizado para un despliegue rápido en Vercel.",
+        url: "https://gestor-proyectos-victor.vercel.app/",
+        technologies: [
+          "Next.js",
+          "NextAuth.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+          "Vercel Blob",
+          "Vercel",
+        ].map((tech) => ({
+          name: tech,
+          color: technologyColorMap[tech],
+        })),
+        code: "https://github.com/VictorPotenciano/gestor-proyectos",
       },
       {
         name: "Bar El Rincón",

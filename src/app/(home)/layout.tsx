@@ -8,8 +8,18 @@ import { LanguageProvider } from "@/context/LanguajeContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio Victor Potenciano",
-  description: "Portfolio personal de Victor Potenciano",
+  metadataBase: new URL("https://portfolio-victor-potenciano.vercel.app"),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -18,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={inter.className}>
         <div className="bg-[#0a0f1a]">
           <LanguageProvider>
