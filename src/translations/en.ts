@@ -212,6 +212,7 @@ const en: TranslationKeys = {
           "Vercel Blob",
           "Vercel",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        code: "https://github.com/VictorPotenciano/casa-alquiler",
       },
       {
         name: "Digital Wedding Invitation",
