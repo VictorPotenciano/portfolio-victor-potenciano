@@ -61,28 +61,28 @@ const en: TranslationKeys = {
       title: "Work Experience",
       jobs: [
         {
+          position: "FRONTEND DEVELOPER",
+          company: "IMPLEMENTAL SYSTEMS",
+          location: "Madrid",
+          period: "March 2026 - Present",
+          description:
+            "Frontend Developer in the development of a GIS system, using React, with integration to backend in Spring Boot, SQL databases and deployment via Docker.",
+        },
+        {
+          position: "WEB DEVELOPER",
+          company: "FUNCIONALIA",
+          location: "Arroyomolinos, Madrid",
+          period: "November 2024 – June 2025",
+          description:
+            "Maintenance and development of websites using WordPress, HTML, Bootstrap and PHP.",
+        },
+        {
           position: "INTERN",
           company: "BBVA NEXT TECHNOLOGIES",
           location: "Madrid",
           period: "April 2022 – June 2022",
           description:
             "Development of web components using HTML, CSS and Javascript in internal projects. Collaboration with the team to implement user interface improvements.",
-        },
-        {
-          position: "WEB DEVELOPER",
-          company: "FUNCIONALIA",
-          location: "Arroyomolinos, Madrid",
-          period: "November 2024 – March 2025",
-          description:
-            "Maintenance and development of websites using WordPress, HTML, Bootstrap and PHP.",
-        },
-        {
-          position: "INTERN",
-          company: "FUNCIONALIA",
-          location: "Arroyomolinos, Madrid",
-          period: "March 2025 – June 2025",
-          description:
-            "Maintenance and development of websites using WordPress, HTML, Bootstrap and PHP.",
         },
       ],
     },

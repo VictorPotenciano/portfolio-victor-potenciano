@@ -61,28 +61,28 @@ const es: TranslationKeys = {
       title: "Experiencia Laboral",
       jobs: [
         {
+          position: "DESARROLLADOR FRONTEND",
+          company: "IMPLEMENTAL SYSTEMS",
+          location: "Madrid",
+          period: "Marzo 2026 - Actualidad",
+          description:
+            "Desarrollador Frontend en el desarrollo de un sistema GIS, utilizando React, con integración a backend en Spring Boot, bases de datos SQL y despliegue mediante Docker.",
+        },
+        {
+          position: "DESARROLLADOR WEB",
+          company: "FUNCIONALIA",
+          location: "Arroyomolinos, Madrid",
+          period: "Noviembre 2024 – Junio 2025",
+          description:
+            "Mantenimiento y desarrollo de páginas web en WordPress, HTML, Bootstrap y PHP.",
+        },
+        {
           position: "EMPLEADO EN PRÁCTICAS",
           company: "BBVA NEXT TECHNOLOGIES",
           location: "Madrid",
           period: "Abril 2022 – Junio 2022",
           description:
             "Desarrollo de componentes web utilizando HTML, CSS y Javascript en proyectos internos. Colaboración con el equipo para implementar mejoras en la interfaz de usuario.",
-        },
-        {
-          position: "DESARROLLADOR WEB",
-          company: "FUNCIONALIA",
-          location: "Arroyomolinos, Madrid",
-          period: "Noviembre 2024 – Marzo 2025",
-          description:
-            "Mantenimiento y desarrollo de páginas web en WordPress, HTML, Bootstrap y PHP.",
-        },
-        {
-          position: "EMPLEADO EN PRÁCTICAS",
-          company: "FUNCIONALIA",
-          location: "Arroyomolinos, Madrid",
-          period: "Marzo 2025 – Junio 2025",
-          description:
-            "Mantenimiento y desarrollo de páginas web en WordPress, HTML, Bootstrap y PHP.",
         },
       ],
     },
