@@ -11,7 +11,7 @@ interface ExperienceCardProps {
 const isCurrentJob = (period: string) => /actualidad|present/i.test(period);
 
 const ExperienceCard = ({ cardVariants, t }: ExperienceCardProps) => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);

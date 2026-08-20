@@ -1,0 +1,16 @@
+# Victor Potenciano
+
+> Desarrollador Web Full Stack afincado en Madrid, España. Especializado en
+> React, Next.js y TypeScript en el frontend, y Node, Spring Boot, Laravel y
+> bases de datos SQL/PostgreSQL en el backend.
+
+Portfolio personal con proyectos reales, experiencia profesional (Implemental
+Systems, Funcionalia, BBVA Next Technologies) y formación en Desarrollo de
+Aplicaciones Multiplataforma y Desarrollo de Aplicaciones Web.
+
+## Enlaces
+
+- Portfolio: https://portfolio-victor-potenciano.vercel.app
+- GitHub: https://github.com/VictorPotenciano
+- LinkedIn: https://www.linkedin.com/in/victor-potenciano-9a29392a4/
+- CV (PDF): https://portfolio-victor-potenciano.vercel.app/Curriculum-Victor-Potenciano.pdf
