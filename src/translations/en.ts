@@ -23,6 +23,8 @@ const en: TranslationKeys = {
     experience: "Technologies",
     projects: "Projects",
     contact: "Contact",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
   },
   home: {
     greeting: "Hi, I'm",

@@ -97,7 +97,10 @@ const StackManifest = ({ technologies }: StackManifestProps) => {
           if (row.kind === "blank") {
             return (
               <div key={index} className="flex h-5">
-                <span className="w-7 shrink-0 text-line select-none">
+                <span
+                  className="w-7 shrink-0 text-muted select-none"
+                  aria-hidden="true"
+                >
                   {lineNumber}
                 </span>
               </div>
@@ -112,7 +115,10 @@ const StackManifest = ({ technologies }: StackManifestProps) => {
                 variants={rowVariants}
                 className="flex items-center gap-2 py-1.5 mt-2 first:mt-0"
               >
-                <span className="w-7 shrink-0 text-line select-none">
+                <span
+                  className="w-7 shrink-0 text-muted select-none"
+                  aria-hidden="true"
+                >
                   {lineNumber}
                 </span>
                 <Icon className="w-3.5 h-3.5 text-accent shrink-0" />
@@ -130,7 +136,10 @@ const StackManifest = ({ technologies }: StackManifestProps) => {
               variants={rowVariants}
               className="flex items-center gap-3 py-1"
             >
-              <span className="w-7 shrink-0 text-line select-none">
+              <span
+                className="w-7 shrink-0 text-muted select-none"
+                aria-hidden="true"
+              >
                 {lineNumber}
               </span>
               <span className="text-foreground/85 flex-1 min-w-0 pl-1">
@@ -139,6 +148,7 @@ const StackManifest = ({ technologies }: StackManifestProps) => {
               <span
                 className="flex items-center gap-1 shrink-0"
                 title={row.level}
+                role="img"
                 aria-label={row.level}
               >
                 {[0, 1, 2].map((dot) => (

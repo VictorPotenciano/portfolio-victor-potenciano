@@ -1,9 +1,20 @@
-import AboutSection from "@/components/about/AboutSection";
-import ContactSection from "@/components/contact/ContactSection";
-import TechnologiesSection from "@/components/technologies/TechnologiesSection";
+import dynamic from "next/dynamic";
 import HomeSection from "@/components/home/HomeSection";
-import ProjectsSection from "@/components/proyects/ProjectsSection";
 import { Metadata } from "next";
+
+// Bajo el pliegue: se separan en chunks propios para reducir el JS que
+// bloquea el hilo principal en la carga inicial (TBT). Siguen renderizadas
+// en el servidor (ssr: true por defecto), solo cambia el bundling.
+const AboutSection = dynamic(() => import("@/components/about/AboutSection"));
+const TechnologiesSection = dynamic(
+  () => import("@/components/technologies/TechnologiesSection")
+);
+const ProjectsSection = dynamic(
+  () => import("@/components/proyects/ProjectsSection")
+);
+const ContactSection = dynamic(
+  () => import("@/components/contact/ContactSection")
+);
 
 export const metadata: Metadata = {
   title: "Victor Potenciano - Portfolio Desarrollador Web Full Stack",
@@ -57,15 +68,18 @@ export default function Home() {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://portfolio-victor-potenciano.vercel.app/#website",
     name: "Victor Potenciano",
     alternateName: ["Victor Potenciano Portfolio", "Portfolio Victor Potenciano"],
     url: "https://portfolio-victor-potenciano.vercel.app",
     inLanguage: "es-ES",
+    publisher: { "@id": "https://portfolio-victor-potenciano.vercel.app/#person" },
   };
 
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://portfolio-victor-potenciano.vercel.app/#person",
     name: "Victor Potenciano",
     alternateName: "Victor",
     jobTitle: "Desarrollador Web Full Stack",

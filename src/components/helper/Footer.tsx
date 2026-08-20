@@ -29,6 +29,7 @@ const Footer = () => {
           <div className="flex items-center gap-5">
             <Link
               href="https://www.linkedin.com/in/victor-potenciano-9a29392a4/"
+              aria-label={t.home.linkedinAlt}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted hover:text-accent hover:-translate-y-0.5 transition-all duration-300"
@@ -37,6 +38,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://github.com/VictorPotenciano"
+              aria-label={t.home.githubAlt}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted hover:text-accent hover:-translate-y-0.5 transition-all duration-300"

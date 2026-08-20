@@ -53,6 +53,8 @@ export interface TranslationKeys {
     experience: string;
     projects: string;
     contact: string;
+    openMenu: string;
+    closeMenu: string;
   };
   home: {
     greeting: string;

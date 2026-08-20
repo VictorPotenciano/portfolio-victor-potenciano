@@ -99,6 +99,8 @@ const Navbar = () => {
             size="icon"
             className="lg:hidden text-foreground hover:bg-surface hover:text-accent transition-colors duration-300"
             onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? t.navbar.closeMenu : t.navbar.openMenu}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 animate-icon-out" />
