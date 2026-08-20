@@ -4,6 +4,7 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { motion, Variants } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { useEffect, useRef } from "react";
 import { FormData, TranslationKeys } from "../../../typing";
 
 interface ContactFormProps {
@@ -13,6 +14,36 @@ interface ContactFormProps {
   itemVariants: Variants;
 }
 
+const fieldClass =
+  "w-full p-3.5 rounded-md bg-ink border border-line text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/60 transition-all duration-300 t-input";
+
+// Dispara el shake (transitions-dev) sobre .t-input cuando el campo falla
+// la validación de react-hook-form; se revierte solo cuando el usuario
+// corrige el valor (reValidateMode "onChange" limpia errors en vivo).
+const useShakeOnError = (hasError: boolean, submitCount: number) => {
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const input = wrap?.querySelector<HTMLElement>(".t-input");
+    if (!wrap || !input) return;
+
+    if (!hasError) {
+      wrap.classList.remove("is-error");
+      input.classList.remove("is-error", "is-shaking");
+      return;
+    }
+
+    wrap.classList.add("is-error");
+    input.classList.add("is-error");
+    input.classList.remove("is-shaking");
+    void input.offsetWidth;
+    input.classList.add("is-shaking");
+  }, [hasError, submitCount]);
+
+  return wrapRef;
+};
+
 const ContactForm = ({
   t,
   onSubmit,
@@ -21,8 +52,12 @@ const ContactForm = ({
 }: ContactFormProps) => {
   const {
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, submitCount },
   } = useForm<FormData>();
+
+  const nameWrapRef = useShakeOnError(Boolean(errors.name), submitCount);
+  const emailWrapRef = useShakeOnError(Boolean(errors.email), submitCount);
+  const messageWrapRef = useShakeOnError(Boolean(errors.message), submitCount);
 
   return (
     <motion.form
@@ -30,10 +65,10 @@ const ContactForm = ({
       onSubmit={onSubmit}
       className="space-y-6"
     >
-      <motion.div variants={itemVariants}>
+      <motion.div variants={itemVariants} ref={nameWrapRef} className="t-input-wrap">
         <Label
           htmlFor="name"
-          className="block text-sm font-semibold text-gray-700 mb-2"
+          className="block font-mono text-xs uppercase tracking-wide text-muted mb-2"
         >
           {t.contact.name}
         </Label>
@@ -43,23 +78,17 @@ const ContactForm = ({
           {...register("name", {
             required: "El nombre es obligatorio",
           })}
-          className="w-full p-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white"
+          className={fieldClass}
         />
-        {errors.name && (
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-red-500 text-sm mt-1"
-          >
-            {errors.name.message}
-          </motion.p>
-        )}
+        <p className="t-error-msg text-red-400 text-sm mt-1">
+          {errors.name?.message}
+        </p>
       </motion.div>
 
-      <motion.div variants={itemVariants}>
+      <motion.div variants={itemVariants} ref={emailWrapRef} className="t-input-wrap">
         <Label
           htmlFor="email"
-          className="block text-sm font-semibold text-gray-700 mb-2"
+          className="block font-mono text-xs uppercase tracking-wide text-muted mb-2"
         >
           {t.contact.email}
         </Label>
@@ -73,23 +102,17 @@ const ContactForm = ({
               message: "Por favor, introduce un email válido",
             },
           })}
-          className="w-full p-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white"
+          className={fieldClass}
         />
-        {errors.email && (
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-red-500 text-sm mt-1"
-          >
-            {errors.email.message}
-          </motion.p>
-        )}
+        <p className="t-error-msg text-red-400 text-sm mt-1">
+          {errors.email?.message}
+        </p>
       </motion.div>
 
-      <motion.div variants={itemVariants}>
+      <motion.div variants={itemVariants} ref={messageWrapRef} className="t-input-wrap">
         <Label
           htmlFor="message"
-          className="block text-sm font-semibold text-gray-700 mb-2"
+          className="block font-mono text-xs uppercase tracking-wide text-muted mb-2"
         >
           {t.contact.message}
         </Label>
@@ -99,42 +122,33 @@ const ContactForm = ({
             required: "El mensaje es obligatorio",
           })}
           rows={5}
-          className="w-full p-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white resize-none"
+          className={`${fieldClass} resize-none`}
         ></Textarea>
-        {errors.message && (
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-red-500 text-sm mt-1"
-          >
-            {errors.message.message}
-          </motion.p>
-        )}
+        <p className="t-error-msg text-red-400 text-sm mt-1">
+          {errors.message?.message}
+        </p>
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        className="text-center pt-4"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
-        >
-          {isSubmitting ? (
-            <motion.span
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="inline-block"
-            >
-              ⏳
-            </motion.span>
-          ) : (
-            <motion.span>{t.contact.send}</motion.span>
-          )}
-        </Button>
+      <motion.div variants={itemVariants} className="pt-2">
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-accent text-accent-foreground px-8 py-6 rounded-md font-semibold hover:bg-accent/90 transition-all duration-300 cursor-pointer"
+          >
+            {isSubmitting ? (
+              <motion.span
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="inline-block"
+              >
+                ⏳
+              </motion.span>
+            ) : (
+              <span>{t.contact.send}</span>
+            )}
+          </Button>
+        </motion.div>
       </motion.div>
     </motion.form>
   );

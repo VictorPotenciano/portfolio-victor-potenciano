@@ -9,9 +9,10 @@ import es from "@/translations/es";
 import en from "@/translations/en";
 import { useLanguage } from "@/context/LanguajeContext";
 import { TranslationKeys } from "../../../typing";
-import { motion, Variants } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { useEffect, useRef } from "react";
 
 const translations: { [key: string]: TranslationKeys } = { es, en };
 
@@ -21,28 +22,95 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.2,
+      delayChildren: 0.3,
+      staggerChildren: 0.18,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: (custom: number) => ({
+  hidden: { y: 16, opacity: 0 },
+  visible: {
     y: 0,
     opacity: 1,
     transition: {
-      type: "spring",
-      damping: 10,
-      delay: custom,
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
     },
-  }),
+  },
+};
+
+// Tilt 3D de la foto de perfil hacia el puntero (transitions-dev card tilt).
+// El puntero se rastrea sobre el wrapper plano .t-tilt para que los bordes
+// de la tarjeta al rotar no se escapen por debajo del cursor.
+const useTiltCard = () => {
+  const tiltRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tilt = tiltRef.current;
+    const card = tilt?.querySelector<HTMLElement>(".t-tilt-card");
+    if (!tilt || !card) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const MAX_TILT_DEG = 10;
+
+    const reset = () => {
+      tilt.classList.remove("is-hover");
+      card.classList.remove("is-tilting");
+      card.style.setProperty("--tilt-rx", "0deg");
+      card.style.setProperty("--tilt-ry", "0deg");
+    };
+
+    const track = (e: PointerEvent) => {
+      if (reduce.matches) return;
+      const r = tilt.getBoundingClientRect();
+      const px = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+      const py = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+      tilt.classList.add("is-hover");
+      card.classList.add("is-tilting");
+      card.style.setProperty("--tilt-ry", ((px - 0.5) * MAX_TILT_DEG).toFixed(2) + "deg");
+      card.style.setProperty("--tilt-rx", ((0.5 - py) * MAX_TILT_DEG).toFixed(2) + "deg");
+      card.style.setProperty("--tilt-gx", (px * 100).toFixed(1) + "%");
+      card.style.setProperty("--tilt-gy", (py * 100).toFixed(1) + "%");
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") {
+        try {
+          tilt.setPointerCapture(e.pointerId);
+        } catch {
+          // el puntero puede haberse liberado ya; no es crítico
+        }
+      }
+    };
+
+    const onPointerLeave = (e: PointerEvent) => {
+      if (e.pointerType === "mouse") reset();
+    };
+
+    tilt.addEventListener("pointerdown", onPointerDown);
+    tilt.addEventListener("pointermove", track);
+    tilt.addEventListener("pointerup", reset);
+    tilt.addEventListener("pointercancel", reset);
+    tilt.addEventListener("pointerleave", onPointerLeave);
+
+    return () => {
+      tilt.removeEventListener("pointerdown", onPointerDown);
+      tilt.removeEventListener("pointermove", track);
+      tilt.removeEventListener("pointerup", reset);
+      tilt.removeEventListener("pointercancel", reset);
+      tilt.removeEventListener("pointerleave", onPointerLeave);
+    };
+  }, []);
+
+  return tiltRef;
 };
 
 const HomeSection = () => {
   const { language } = useLanguage();
   const t = translations[language];
+  const shouldReduceMotion = useReducedMotion();
+  const tiltRef = useTiltCard();
 
   const handleDownload = () => {
     const pdfUrl = "/Curriculum-Victor-Potenciano.pdf";
@@ -57,143 +125,162 @@ const HomeSection = () => {
   return (
     <section
       id="home"
-      className="pt-20 pb-16 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white flex items-center justify-center min-h-screen relative"
+      className="relative pt-28 pb-20 min-h-screen flex items-center overflow-hidden"
       aria-label="Inicio - Victor Potenciano"
     >
-      <div className="absolute inset-0 bg-black/20"></div>
+      {/* Fondo: rejilla + brillo ambiental */}
+      <div className="absolute inset-0 grid-texture [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_75%)]" />
+      <div
+        aria-hidden="true"
+        className={`absolute -top-24 right-[-10%] w-[36rem] h-[36rem] rounded-full bg-accent/10 blur-[120px] ${
+          shouldReduceMotion ? "" : "animate-drift"
+        }`}
+      />
 
-      {/* Contenedor principal */}
-      <motion.div
-        className="container mx-auto px-4 lg:px-8 flex flex-col items-center gap-8 text-center relative z-10"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ amount: 0.2 }}
-        variants={containerVariants}
-      >
-        {/* Foto */}
+      <div className="container relative z-10 mx-auto px-4 lg:px-8">
         <motion.div
-          variants={itemVariants}
-          className="flex-shrink-0"
-          whileHover={{ scale: 1.05 }}
-          custom={0.7}
+          className="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
         >
-          <Image
-            src="/fotoperfil.jpg"
-            alt="Victor Potenciano - Desarrollador Web Full Stack"
-            priority
-            width={300}
-            height={300}
-            className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full object-cover shadow-2xl border-4 border-white/20 hover:scale-105 transition-transform duration-300"
-          />
-        </motion.div>
+          {/* Texto */}
+          <div className="text-center lg:text-left order-2 lg:order-1">
+            <motion.p
+              variants={itemVariants}
+              className="font-mono text-sm sm:text-base text-accent mb-4"
+            >
+              <span className="text-muted">victor@portfolio</span>
+              <span className="text-foreground">:~$</span> {t.home.greeting.toLowerCase()}
+            </motion.p>
 
-        {/* Texto */}
-        <motion.div variants={itemVariants} custom={0.5}>
-          <p className="text-lg md:text-xl mb-2 opacity-90">
-            {t.home.greeting}
-          </p>
-          
-          <h1 className="sr-only">
-            Victor Potenciano - Desarrollador Web Full Stack
-          </h1>
+            <motion.h1
+              variants={itemVariants}
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-tight"
+            >
+              {t.home.name}
+            </motion.h1>
 
-          <div
-            aria-hidden="true"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mt-2 mb-6"
-          >
-            <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+            <motion.div
+              variants={itemVariants}
+              aria-hidden="true"
+              className="font-mono text-lg sm:text-xl lg:text-2xl text-muted mt-4 min-h-[2em]"
+            >
+              <span className="text-accent">&gt;</span>{" "}
               <Typewriter
                 words={t.home.titles}
                 loop={0}
                 cursor
                 cursorStyle="_"
-                typeSpeed={120}
-                deleteSpeed={120}
-                delaySpeed={1000}
+                typeSpeed={110}
+                deleteSpeed={90}
+                delaySpeed={1400}
               />
-            </span>
-          </div>
-        </motion.div>
+            </motion.div>
 
-        {/* Botones */}
-        <motion.div
-          className="flex flex-col sm:flex-row justify-center gap-4"
-          variants={itemVariants}
-          custom={0.3}
-        >
-          <motion.div variants={itemVariants} custom={0.3}>
-            <Button
-              asChild
-              onClick={handleDownload}
-              className="bg-white text-purple-600 px-8 py-6 rounded-full font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer"
+            <motion.div
+              className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-10"
+              variants={itemVariants}
             >
-              <span>{t.home.downloadCv}</span>
-            </Button>
-          </motion.div>
-          <motion.div variants={itemVariants} custom={0.35}>
-            <Link href="/#contact">
-              <Button className="bg-purple-700/80 backdrop-blur-sm text-white px-8 py-6 rounded-full font-semibold hover:bg-purple-800 hover:scale-105 transition-all duration-300 shadow-lg border border-white/20 cursor-pointer">
-                {t.home.contactMe}
+              <Button
+                asChild
+                onClick={handleDownload}
+                className="bg-accent text-accent-foreground px-8 py-6 rounded-md font-semibold hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-accent/10 cursor-pointer"
+              >
+                <span>{t.home.downloadCv}</span>
               </Button>
-            </Link>
+              <Link href="/#contact">
+                <Button
+                  variant="outline"
+                  className="w-full bg-transparent text-foreground border border-line px-8 py-6 rounded-md font-semibold hover:border-accent/60 hover:text-accent hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                >
+                  {t.home.contactMe}
+                </Button>
+              </Link>
+            </motion.div>
+
+            {/* Iconos */}
+            <motion.div
+              className="flex justify-center lg:justify-start gap-6 mt-10"
+              variants={itemVariants}
+            >
+              <Link
+                href="https://www.linkedin.com/in/victor-potenciano-9a29392a4/"
+                aria-label={t.home.linkedinAlt}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-accent transition-colors duration-300"
+              >
+                <motion.span
+                  className="block"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Linkedin className="w-7 h-7" />
+                </motion.span>
+              </Link>
+
+              <Link
+                href="https://github.com/VictorPotenciano"
+                aria-label={t.home.githubAlt}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-accent transition-colors duration-300"
+              >
+                <motion.span
+                  className="block"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Github className="w-7 h-7" />
+                </motion.span>
+              </Link>
+
+              <Link
+                href="https://wa.me/+34660529420"
+                aria-label={t.home.whatsappAlt}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-accent transition-colors duration-300"
+              >
+                <motion.span
+                  className="block"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FontAwesomeIcon
+                    icon={faWhatsapp}
+                    className="w-7 h-7"
+                    style={{ fontSize: "1.75rem" }}
+                  />
+                </motion.span>
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Foto */}
+          <motion.div
+            variants={itemVariants}
+            ref={tiltRef}
+            className="order-1 lg:order-2 flex justify-center lg:justify-end t-tilt"
+          >
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 t-tilt-card">
+              <div className="absolute -inset-3 border border-line rounded-2xl" />
+              <span className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-accent rounded-tl-lg" />
+              <span className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-accent rounded-br-lg" />
+              <Image
+                src="/fotoperfil.jpg"
+                alt="Victor Potenciano - Desarrollador Web Full Stack"
+                priority
+                width={320}
+                height={320}
+                className="relative w-full h-full rounded-xl object-cover grayscale-[15%] shadow-2xl"
+              />
+              <div className="t-tilt-glare rounded-xl" aria-hidden="true" />
+            </div>
           </motion.div>
         </motion.div>
-
-        {/* Iconos */}
-        <motion.div
-          className="flex justify-center gap-6"
-          variants={itemVariants}
-          custom={0.1}
-        >
-          {/* LinkedIn */}
-          <Link
-            href="https://www.linkedin.com/in/victor-potenciano-9a29392a4/"
-            aria-label={t.home.linkedinAlt}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <motion.div
-              whileHover={{ y: -5, scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Linkedin className="w-10 h-10" />
-            </motion.div>
-          </Link>
-
-          {/* GitHub */}
-          <Link
-            href="https://github.com/VictorPotenciano"
-            aria-label={t.home.githubAlt}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <motion.div
-              whileHover={{ y: -5, scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Github className="w-10 h-10" />
-            </motion.div>
-          </Link>
-          {/* WhatsApp */}
-          <Link
-            href="https://wa.me/+34660529420"
-            aria-label={t.home.whatsappAlt}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <motion.div
-              whileHover={{ y: -5, scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FontAwesomeIcon
-                icon={faWhatsapp}
-                className="w-10 h-10"
-                style={{ fontSize: "2.5rem" }}
-              />
-            </motion.div>
-          </Link>
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };

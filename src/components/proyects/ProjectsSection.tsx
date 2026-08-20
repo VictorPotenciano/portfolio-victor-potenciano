@@ -4,121 +4,108 @@ import es from "@/translations/es";
 import en from "@/translations/en";
 import { useLanguage } from "@/context/LanguajeContext";
 import { TranslationKeys } from "../../../typing";
-import { motion, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import ProjectDialog from "./ProjectDialog";
-import ProjectCard from "./ProjectCard";
+import ProjectRow from "./ProjectRow";
+import ProjectDetail from "./ProjectDetail";
+import SectionHeading from "@/components/helper/SectionHeading";
 
 const translations: { [key: string]: TranslationKeys } = { es, en };
-
-// Variantes para animaciones
-const cardVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
-      duration: 0.5,
-    },
-  },
-  hover: {
-    y: -10,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-};
 
 const ProjectsSection = () => {
   const { language } = useLanguage();
   const t = translations[language];
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const projects = t.projects.projects;
+
+  const [selected, setSelected] = useState(0);
+  const [expandedMobile, setExpandedMobile] = useState<number | null>(0);
 
   return (
-    <section
-      id="projects"
-      className="py-16 lg:py-36 bg-gradient-to-b from-gray-50 to-white"
-    >
+    <section id="projects" className="py-20 lg:py-28 bg-ink">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Titulo */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ amount: 0.3 }}
-          className="text-center mb-12 lg:mb-16"
-        >
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-600 mb-2"
-          >
-            {t.projects.subtitle}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-4xl pb-2 md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
-          >
-            {t.projects.title}
-          </motion.h1>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mt-4 rounded-full origin-left"
-          />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ margin: "-50px" }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.3,
-              },
-            },
-          }}
-          className="max-h-[600px] overflow-y-auto space-y-6 px-4 scrollbar-thin scrollbar-thumb-purple-600 scrollbar-track-gray-100"
-        >
-          {t.projects.projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }} 
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
-                duration: 0.5,
-                delay: index * 0.15, 
-              }}
-              whileHover="hover"
-              variants={cardVariants} 
-              onClick={() => setSelectedProject(index)}
-              className="cursor-pointer my-4"
-            >
-              <ProjectCard project={project} t={t} />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Dialog con información completa */}
-        <ProjectDialog
-          selectedProject={selectedProject}
-          setSelectedProject={setSelectedProject}
-          t={t}
+        <SectionHeading
+          path="~/projects"
+          subtitle={t.projects.subtitle}
+          title={t.projects.title}
         />
+
+        {/* Explorador de escritorio */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden lg:grid grid-cols-[280px_1fr] max-w-6xl mx-auto rounded-xl border border-line bg-surface/40 overflow-hidden"
+        >
+          <div className="border-r border-line p-3 max-h-[560px] overflow-y-auto thin-scroll">
+            <p className="font-mono text-[11px] text-muted px-3 pb-2 pt-1">
+              ~/projects
+            </p>
+            <div className="space-y-1">
+              {projects.map((project, index) => (
+                <ProjectRow
+                  key={index}
+                  project={project}
+                  active={index === selected}
+                  onSelect={() => setSelected(index)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="p-8 lg:p-10 min-h-[480px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selected}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <ProjectDetail project={projects[selected]} t={t} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        {/* Acordeón móvil/tablet */}
+        <div className="lg:hidden max-w-2xl mx-auto space-y-3">
+          {projects.map((project, index) => {
+            const isOpen = expandedMobile === index;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.06, duration: 0.5 }}
+                className="rounded-xl border border-line bg-surface overflow-hidden"
+              >
+                <ProjectRow
+                  project={project}
+                  active={isOpen}
+                  onSelect={() => setExpandedMobile(isOpen ? null : index)}
+                  variant="accordion"
+                />
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: isOpen ? "auto" : 0,
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-5 pb-6 pt-1 border-t border-line">
+                    <div className="pt-4">
+                      <ProjectDetail project={project} t={t} compact />
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

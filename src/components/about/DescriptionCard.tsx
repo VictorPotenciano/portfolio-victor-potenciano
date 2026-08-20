@@ -11,37 +11,22 @@ const DescriptionCard = ({ cardVariants, t }: DescriptionCardProps) => {
   return (
     <motion.div
       variants={cardVariants}
-      className="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-gray-100 bg-gradient-to-br from-purple-600/10 to-blue-600/5 hover:shadow-2xl transition-shadow duration-300 h-full"
+      className="lg:col-span-2 bg-surface rounded-xl border border-line hover:border-accent/40 transition-colors duration-300 h-full"
     >
       <CardContent className="p-8 lg:p-10">
-        <div className="prose prose-lg max-w-none">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="text-gray-700 leading-relaxed text-lg mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-purple-600 first-letter:float-left first-letter:mr-3"
-          >
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted mb-6">
+          # whoami
+        </p>
+        <div className="space-y-5">
+          <p className="text-foreground/90 leading-relaxed text-base sm:text-lg first-letter:text-4xl first-letter:font-display first-letter:font-semibold first-letter:text-accent first-letter:float-left first-letter:mr-3">
             {t.about.description1}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="text-gray-700 leading-relaxed text-lg mb-6"
-          >
+          </p>
+          <p className="text-muted leading-relaxed text-base">
             {t.about.description2}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 1.0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="text-gray-700 leading-relaxed text-lg"
-          >
+          </p>
+          <p className="text-muted leading-relaxed text-base">
             {t.about.description3}
-          </motion.p>
+          </p>
         </div>
       </CardContent>
     </motion.div>

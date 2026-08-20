@@ -11,9 +11,18 @@ import en from "@/translations/en";
 
 const translations: { [key: string]: TranslationKeys } = { es, en };
 
+const navLinks = [
+  { href: "#home", key: "home" as const },
+  { href: "#about", key: "about" as const },
+  { href: "#experience", key: "experience" as const },
+  { href: "#projects", key: "projects" as const },
+  { href: "#contact", key: "contact" as const },
+];
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const { language } = useLanguage();
   const t = translations[language];
@@ -40,75 +49,55 @@ const Navbar = () => {
     }
   }, [isMenuVisible]);
 
-  const text = "Victor Potenciano";
-  const letters = text.split("").map((letter, index) => (
-    <span
-      key={index}
-      className="inline-block transition-all duration-300 group-hover:animate-wave-letter"
-      style={{ animationDelay: `${index * 50}ms` }}
-    >
-      {letter === " " ? "\u00A0" : letter}
-    </span>
-  ));
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="bg-white shadow-lg fixed top-0 w-full z-50 transition-all duration-300">
+    <header
+      className={`fixed top-0 w-full z-50 border-b transition-colors duration-300 ${
+        scrolled
+          ? "bg-ink/85 backdrop-blur-md border-line"
+          : "bg-transparent border-transparent"
+      }`}
+    >
       <div className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent transition-all duration-700 ease-in-out group-hover:bg-gradient-to-l group-hover:from-indigo-600 group-hover:via-blue-600 group-hover:to-purple-600 group-hover:scale-125 group-hover:animate-pulse">
-            {letters}
-          </div>
+          <span className="font-mono text-lg lg:text-xl font-medium text-foreground">
+            <span className="text-accent">&lt;</span>
+            VP
+            <span className="text-accent">/&gt;</span>
+          </span>
         </Link>
 
         {/* Navegación desktop */}
-        <nav className="hidden lg:flex space-x-12">
-          <Link
-            href="#home"
-            className="text-lg font-medium text-blue-800 hover:text-purple-600 transition-colors duration-300 relative group"
-          >
-            {t.navbar.home}
-            <span className="absolute bottom-0 left-0 w-0 h-1 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-            href="#about"
-            className="text-lg font-medium text-blue-800 hover:text-purple-600 transition-colors duration-300 relative group"
-          >
-            {t.navbar.about}
-            <span className="absolute bottom-0 left-0 w-0 h-1 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-            href="#experience"
-            className="text-lg font-medium text-blue-800 hover:text-purple-600 transition-colors duration-300 relative group"
-          >
-            {t.navbar.experience}
-            <span className="absolute bottom-0 left-0 w-0 h-1 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-            href="#projects"
-            className="text-lg font-medium text-blue-800 hover:text-purple-600 transition-colors duration-300 relative group"
-          >
-            {t.navbar.projects}
-            <span className="absolute bottom-0 left-0 w-0 h-1 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-            href="#contact"
-            className="text-lg font-medium text-blue-800 hover:text-purple-600 transition-colors duration-300 relative group"
-          >
-            {t.navbar.contact}
-            <span className="absolute bottom-0 left-0 w-0 h-1 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
+        <nav className="hidden lg:flex items-center gap-10 font-mono text-sm">
+          {navLinks.map((link) => (
+            <Link
+              key={link.key}
+              href={link.href}
+              className="relative text-muted hover:text-foreground transition-colors duration-300 group lowercase"
+            >
+              <span className="text-accent">~/</span>
+              {t.navbar[link.key]}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
+            </Link>
+          ))}
         </nav>
 
         {/* Botón de menú móvil */}
-        <div className="flex items-center gap-6 lg:gap-4">
+        <div className="flex items-center gap-4 lg:gap-3">
           <div className="order-2 lg:order-1">
             <TranslateButton />
           </div>
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden text-blue-800 hover:bg-purple-100 hover:text-purple-600 transition-colors duration-300"
+            className="lg:hidden text-foreground hover:bg-surface hover:text-accent transition-colors duration-300"
             onClick={toggleMobileMenu}
           >
             {isMobileMenuOpen ? (
@@ -123,46 +112,22 @@ const Navbar = () => {
       {/* Menú móvil */}
       {isMobileMenuOpen && (
         <nav
-          className={`lg:hidden bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 shadow-lg ${
+          className={`lg:hidden bg-ink border-t border-line ${
             isMenuVisible ? "animate-menu-slide-in" : "animate-menu-slide-out"
           }`}
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col space-y-4">
-            <Link
-              href="#home"
-              className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-              onClick={closeMobileMenu}
-            >
-              {t.navbar.home}
-            </Link>
-            <Link
-              href="#about"
-              className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-              onClick={closeMobileMenu}
-            >
-              {t.navbar.about}
-            </Link>
-            <Link
-              href="#experience"
-              className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-              onClick={closeMobileMenu}
-            >
-              {t.navbar.experience}
-            </Link>
-            <Link
-              href="#projects"
-              className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-              onClick={closeMobileMenu}
-            >
-              {t.navbar.projects}
-            </Link>
-            <Link
-              href="#contact"
-              className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-              onClick={closeMobileMenu}
-            >
-              {t.navbar.contact}
-            </Link>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col space-y-4 font-mono">
+            {navLinks.map((link) => (
+              <Link
+                key={link.key}
+                href={link.href}
+                className="text-foreground hover:text-accent px-3 py-2 rounded-md text-base transition-colors duration-300"
+                onClick={closeMobileMenu}
+              >
+                <span className="text-accent">~/</span>
+                {t.navbar[link.key]}
+              </Link>
+            ))}
           </div>
         </nav>
       )}

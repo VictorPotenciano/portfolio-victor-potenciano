@@ -42,11 +42,11 @@ const en: TranslationKeys = {
     title: "About me?",
     subtitle: "Want to know more",
     description1:
-      "Full Stack Developer specialized in creating robust and scalable digital solutions. Focused on modern architectures for both frontend and backend to develop high-performance web applications.",
+      "I'm a Madrid-based Full Stack developer who builds complete web applications end to end, from the interface down to the database. I trained in Multiplatform Application Development and Web Application Development, and I haven't stopped shipping real projects to keep learning since.",
     description2:
-      "My professional approach integrates efficient system design with intuitive interfaces, prioritizing code quality and end-user experience. Oriented towards implementing best practices and agile development methodologies.",
+      "I work mainly with React, Next.js and TypeScript on the frontend, and Node, Spring Boot, Laravel and SQL/PostgreSQL databases on the backend, depending on what each project calls for. I care as much about maintainable code as about the person using the app never having to think about how it works underneath: the interface gets the same attention as the architecture behind it.",
     description3:
-      "Committed to continuous learning of emerging technologies and technical excellence in every project. Proven ability to work in collaborative environments and deliver high-impact solutions.",
+      "Outside of work I keep building my own projects (the ones you see on this site are just a sample) because that's how I learn new technology fastest. I'm open to new challenges and opportunities, so if you've got a project in mind, let's talk.",
     certificates: {
       title: "Certificates",
       items: [
@@ -66,7 +66,7 @@ const en: TranslationKeys = {
           location: "Madrid",
           period: "March 2026 - Present",
           description:
-            "Frontend Developer in the development of a GIS system, using React, with integration to backend in Spring Boot, SQL databases and deployment via Docker.",
+            "Develop the frontend of a GIS system in React, building the map views and geospatial data panels, integrated with a Spring Boot backend and SQL databases.",
         },
         {
           position: "WEB DEVELOPER",
@@ -74,7 +74,7 @@ const en: TranslationKeys = {
           location: "Arroyomolinos, Madrid",
           period: "November 2024 – June 2025",
           description:
-            "Maintenance and development of websites using WordPress, HTML, Bootstrap and PHP.",
+            "Maintained and built WordPress websites for different clients, hand-crafting layouts in HTML and Bootstrap and writing custom PHP functionality whenever plugins fell short of what a project needed. Fixed bugs and shipped performance and UX improvements on sites already in production.",
         },
         {
           position: "INTERN",
@@ -82,7 +82,7 @@ const en: TranslationKeys = {
           location: "Madrid",
           period: "April 2022 – June 2022",
           description:
-            "Development of web components using HTML, CSS and Javascript in internal projects. Collaboration with the team to implement user interface improvements.",
+            "Built web components with HTML, CSS and JavaScript for internal projects, turning designs into functional, accessible interfaces. Worked closely with the development team on code reviews and continuous UI improvements, my first real taste of working inside a professional team.",
         },
       ],
     },
@@ -165,9 +165,9 @@ const en: TranslationKeys = {
       {
         name: "My Personal Portfolio",
         description1:
-          "Professional web portfolio with modern design, interactive sections and integrated contact system.",
+          "Portfolio with its own visual identity, a dark developer-console theme, fluid motion and a working contact form.",
         description2:
-          "This personal portfolio showcases my professional experience, technical skills, and completed projects. The application features a modern and fully responsive interface, organized into distinct sections: a presentation with dynamic text animations, a professional biography, a comprehensive list of technologies with proficiency levels categorized by Frontend, Backend, and Tools, a project gallery with interactive cards displaying detailed information in modals, an education and certifications section, and a functional contact form. The website includes instant translation between Spanish and English, smooth navigation between sections with animated scrolling, and visual effects that enhance the user experience. Projects are presented with the technologies used, labeled with custom color codes, and include direct links to live demos and GitHub repositories. It also features CV download functionality and links to professional profiles. The portfolio is built with Next.js and TypeScript, styled with Tailwind CSS to ensure a consistent and professional design that reflects my capabilities as a full-stack developer.",
+          "This is the site you're looking at right now: a dark interface inspired by developer terminals and consoles, with monospace type for the stack and each project's status. It includes an animated intro, a bio, a stack manifest with proficiency levels, a project explorer with a detail view, work experience as a commit-style log, education, and a working contact form. It switches instantly between Spanish and English and adapts to any screen size. Built with Next.js, TypeScript and Tailwind CSS, deployed on Vercel.",
         url: "https://portfolio-victor-potenciano.vercel.app/",
         technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"].map(
           (tech) => ({
@@ -180,9 +180,9 @@ const en: TranslationKeys = {
       {
         name: "FrutasCalix",
         description1:
-          "A complete web application for fruit and vegetable sales with an integrated administrative management system.",
+          "Online fruit and vegetable store with full back-of-house management.",
         description2:
-          "Includes advanced features for managing products, categories, special offers, order management, and user management, with a complete control panel for administrators.",
+          "The admin panel manages the product and category catalog, configures special offers, and tracks orders and registered users, all in one place.",
         technologies: [
           "Next.js",
           "Tailwind CSS",
@@ -196,9 +196,9 @@ const en: TranslationKeys = {
       {
         name: "Ibernova Soluciones",
         description1:
-          "Complete property rental platform with booking system, integrated payments and administrative panel.",
+          "Rental platform for a holiday property, with online booking, integrated payments and an owner-facing management panel.",
         description2:
-          "A complete web application for managing a rental property in Villaviciosa de Odón. The platform allows users to explore the property with an image gallery hosted on Vercel Blob, check availability, and securely make bookings through Stripe integration for payment processing. The system includes user authentication implemented with NextAuth.js, enabling registration and login. Users can manage their bookings from their personal panel, while the administrator has a comprehensive dashboard to control property information, manage registered users, and monitor all active bookings. The application is built with Next.js and TypeScript, ensuring robust and maintainable code. Responsive design is achieved using Tailwind CSS, while the PostgreSQL database (hosted on Neon) is managed through Prisma ORM.",
+          "An application for managing the rental of a property in Villaviciosa de Odón. Guests check availability, browse an image gallery hosted on Vercel Blob, and book securely with payments handled by Stripe. Access is controlled with NextAuth.js: each guest manages their own bookings from their panel, while the owner has a dashboard to edit property details, review users, and monitor every active booking. Backend on Prisma over PostgreSQL (Neon), interface in Next.js, TypeScript and Tailwind CSS.",
         url: "https://www.ibernovasoluciones.es/",
         technologies: [
           "Next.js",
@@ -217,9 +217,9 @@ const en: TranslationKeys = {
       {
         name: "Digital Wedding Invitation",
         description1:
-          "Elegant wedding website with RSVP, tourist recommendations, and an administrative panel with advanced filters.",
+          "Wedding website with RSVP, a local guide for guests, and an organization panel for the couple.",
         description2:
-          "A complete web application designed for weddings. The site offers a romantic and elegant visual experience where guests can access all the necessary information about the event: detailed ceremony and reception times, the exact location with an interactive map, information about transportation (buses) for guests, and an RSVP form. It includes a comprehensive recommendations section with nearby hotels and accommodations, hair and beauty salons for getting ready, top restaurants in the area, and a tourist guide with must-see places to visit in Toledo. The application also features a gift section where guests can easily contribute financially. It incorporates a complete administrative dashboard for the couple, where they can view all RSVPs in real time with custom filters: guests who RSVP, those who need transportation, people with allergies or dietary restrictions, and the status of responses. This panel allows for efficient management of event logistics and facilitates catering and transportation planning. The responsive design is optimized for mobile devices, with a carefully crafted aesthetic that combines photos of the couple, romantic decorative elements, and intuitive navigation through the different sections.",
+          "Built for a real wedding held in Toledo. Guests find everything about the event there (schedule, location with an interactive map, bus transport) and RSVP through a form noting allergies or transport needs. It includes local recommendations (accommodation, hair salons, restaurants and places to visit) and a gift section for contributing financially. The couple gets a dashboard that centralizes RSVPs in real time with filters by attendance, transport and dietary restrictions, built to simplify catering and bus logistics. Next.js, Tailwind CSS and Prisma over PostgreSQL (Neon).",
         url: "https://web-boda-zeta.vercel.app/",
         technologies: [
           "Next.js",
@@ -236,9 +236,9 @@ const en: TranslationKeys = {
       {
         name: "Jsouto Peluqueros",
         description1:
-          "Complete website for a hair salon with detailed information and appointment booking system.",
+          "Website for a hair salon with online appointment booking and an integrated blog.",
         description2:
-          "It features informational pages about the hair salon, a booking module where clients enter their details, select services, date, and time. It also includes a blog and an administrative panel for managing bookings, blog posts, available times, and services offered. It uses Vercel Blob for image management.",
+          "Clients pick a service, date and time through a dedicated booking module, and can follow the salon's news on an integrated blog. The admin panel manages appointments, blog posts, available time slots and the service catalog; images are served from Vercel Blob.",
         technologies: [
           "Next.js",
           "NextAuth.js",
@@ -254,9 +254,10 @@ const en: TranslationKeys = {
       },
       {
         name: "Project Manager – ProjectHub",
-        description1: "Web application for project management.",
+        description1:
+          "Collaborative project manager with tasks, payments, files and real-time notifications.",
         description2:
-          "A project manager developed with Next.js and TypeScript. The application offers a complete solution for efficiently organizing, tracking, and managing projects. It allows users to create projects, generate and assign tasks to project members, record payments, add comments, attach files, and invite and add team members. Each user has full control over their own projects and those they participate in as a member. It also features a real-time notification system that alerts users to any modifications, updates, or important activity within projects. The application boasts a clean and professional design thanks to Tailwind CSS and is optimized for rapid deployment on Vercel.",
+          "Each project groups tasks assignable to team members, logged payments, comments and attached files; inviting someone new is as simple as adding their user. A real-time notification system flags any relevant change, so nothing slips through. Built with Next.js, TypeScript, Prisma over PostgreSQL (Neon) and NextAuth.js, deployed on Vercel.",
         url: "https://gestor-proyectos-victor.vercel.app/",
         technologies: [
           "Next.js",
@@ -277,9 +278,9 @@ const en: TranslationKeys = {
       {
         name: "Bar El Rincon",
         description1:
-          "Complete landing page for a fictional bar with dynamic menu, reservation system and event management.",
+          "Landing page for a fictional bar, with a database-driven menu and online table reservations.",
         description2:
-          "This demo project simulates a complete website for a bar specializing in mixology and gastronomy. The application includes a modern landing page with multiple sections: a business introduction, a daily menu configurable from a database, a full menu of drinks and dishes, an image gallery, information on recurring events, and a functional reservation system. The reservation form allows users to select the date, time, number of guests, and add comments. The application uses Prisma with PostgreSQL (Neon) to manage the dynamic menu content and reservations. The responsive design, implemented with Tailwind CSS, offers smooth navigation and subtle animations that enhance the user experience. It includes all the typical sections of a business website: opening hours, contact information, location, and social media links, demonstrating full-stack capabilities in web application development for businesses.",
+          "A demo project for a bar specializing in mixology. The daily menu and full drinks-and-food list load dynamically from PostgreSQL (Neon) via Prisma, so changing a dish or a drink never touches code. Visitors book a table by picking date, time, party size and notes, and browse an image gallery, recurring events, hours and contact details in a responsive experience with subtle animation, built in Next.js and Tailwind CSS.",
         url: "https://bar-elrincon-app.vercel.app/",
         technologies: [
           "Next.js",
@@ -295,9 +296,9 @@ const en: TranslationKeys = {
       {
         name: "Task Manager",
         description1:
-          "Web application for task management with user authentication, advanced filters, and customizable category organization.",
+          "Personal task manager with custom categories, status filters and private per-user access.",
         description2:
-          "A complete task management system with secure authentication via NextAuth.js. Users can register and log in to access their personal workspace to manage their tasks privately. The application offers full CRUD functionality for both tasks and custom categories, allowing users to create, edit, delete, and view items according to their needs. It includes a filtering system that allows users to view all tasks, only pending tasks, or only completed tasks, facilitating organization and progress tracking. Tasks can be grouped into user-defined categories, providing a flexible structure adaptable to different types of projects or work areas. The PostgreSQL database, managed with Prisma, securely stores all user, task, and category information. The responsive design, implemented with Tailwind CSS, ensures an optimal experience on both mobile and desktop devices, making task management accessible from anywhere.",
+          "Each user signs in with NextAuth.js and manages their own private space, with full CRUD for both tasks and the categories they define themselves. Filtering by pending, completed or all makes it easy to track progress, and grouping by category adapts the tool to different projects or areas. Prisma over PostgreSQL stores the data; Tailwind CSS handles the responsive design.",
         url: "https://gestor-de-tareas-app.vercel.app/",
         technologies: [
           "Next.js",
@@ -310,6 +311,25 @@ const en: TranslationKeys = {
           "Vercel",
         ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
         code: "https://github.com/VictorPotenciano/gestor-de-tareas-app",
+      },
+      {
+        name: "DineroVista",
+        description1:
+          "Personal net worth tracking with multi-currency accounts, real-time quotes and monthly history.",
+        description2:
+          "Centralizes every account the user holds in a single dashboard: bank accounts, cash, savings, cryptocurrencies and investment assets like stocks or ETFs. Each account carries its own currency and identifying color; for crypto and stocks, a symbol and quantity that are automatically valued with real-time quotes from sources like CoinGecko. Net worth converts to euros and shows up in monthly and yearly evolution charts alongside financial KPIs. A snapshot system, manual or via a monthly cron job, reconstructs net worth history over time. Sign in with Google or email/password through NextAuth.js, with email verification (React Email) and secure password changes. Prisma over PostgreSQL (Neon) on the backend; Next.js, TypeScript and Tailwind CSS in a fully responsive interface.",
+        url: "https://dinero-vista.vercel.app/",
+        technologies: [
+          "Next.js",
+          "NextAuth.js",
+          "Tailwind CSS",
+          "TypeScript",
+          "Prisma",
+          "Neon",
+          "PostgreSQL",
+          "Vercel",
+        ].map((tech) => ({ name: tech, color: technologyColorMap[tech] })),
+        code: "https://github.com/VictorPotenciano/dinero-vista",
       },
     ],
     button: "View Project",

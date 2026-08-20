@@ -1,5 +1,4 @@
 import { motion, Variants } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { TranslationKeys } from "../../../typing";
 import { GraduationCap } from "lucide-react";
 
@@ -11,55 +10,42 @@ interface EducationCardProps {
 const EducationCard = ({ cardVariants, t }: EducationCardProps) => {
   return (
     <motion.div variants={cardVariants}>
-      <Card className="max-w-6xl mx-auto rounded-2xl shadow-xl border border-gray-100 bg-gradient-to-br from-purple-600/10 to-blue-600/5 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-        <CardHeader>
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", delay: 0.4 }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="text-center mb-8"
-          >
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <GraduationCap className="w-8 h-8 filter brightness-0 invert" />
-            </div>
-            <CardTitle className="text-2xl lg:text-3xl font-bold text-gray-800">
-              {t.about.education.title}
-            </CardTitle>
-          </motion.div>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {t.about.education.degrees.map((degree, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 + index * 0.2 }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`border-l-4 ${
-                  index % 2 === 0
-                    ? "border-purple-500 hover:bg-purple-50"
-                    : "border-blue-500 hover:bg-blue-50"
-                } pl-6 p-4 rounded-r-lg transition-colors duration-300`}
-              >
-                <p className="font-semibold text-gray-800 mb-1">
-                  {degree.type}
-                </p>
-                <p
-                  className={`font-bold ${
-                    index % 2 === 0 ? "text-purple-600" : "text-blue-600"
-                  } text-lg mb-2`}
-                >
-                  {degree.name}
-                </p>
-                <p className="text-gray-600 mb-1">{degree.institution}</p>
-                <p className="text-sm text-gray-500">{degree.period}</p>
-              </motion.div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      <div className="max-w-6xl mx-auto bg-surface rounded-xl border border-line p-6 sm:p-10">
+        <div className="flex items-center gap-3 mb-8">
+          <GraduationCap className="w-5 h-5 text-accent" />
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-foreground">
+            {t.about.education.title}
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {t.about.education.degrees.map((degree, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.12, duration: 0.5 }}
+              viewport={{ once: true, amount: 0.3 }}
+              whileHover={{ y: -3 }}
+              className="relative rounded-lg bg-ink border border-line p-6 transition-colors duration-300 hover:border-accent/40"
+            >
+              <span className="absolute -top-px -left-px w-4 h-4 border-t-2 border-l-2 border-accent rounded-tl-md" />
+              <span className="absolute -bottom-px -right-px w-4 h-4 border-b-2 border-r-2 border-accent rounded-br-md" />
+
+              <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent mb-3">
+                {degree.type}
+              </p>
+              <p className="font-display font-semibold text-foreground text-lg mb-2">
+                {degree.name}
+              </p>
+              <p className="text-muted text-sm">{degree.institution}</p>
+              <p className="font-mono text-xs text-muted mt-3">
+                {degree.period}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </motion.div>
   );
 };

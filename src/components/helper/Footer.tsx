@@ -15,44 +15,44 @@ const Footer = () => {
   const { language } = useLanguage();
   const t = translations[language];
   return (
-    <footer className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center">
-          <div className="mb-4">
-            <h3 className="text-2xl font-bold text-white bg-clip-text">
-              Victor Potenciano
-            </h3>
-          </div>
-          <div className="flex justify-center gap-6 mb-6">
+    <footer className="border-t border-line bg-ink">
+      <div className="container mx-auto px-4 lg:px-8 py-10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <span className="font-mono text-sm text-muted">
+            <span className="text-accent">&lt;</span>
+            VP
+            <span className="text-accent">/&gt;</span>
+            <span className="mx-2 text-line">·</span>
+            Copyright © {new Date().getFullYear()}. {t.footer.rigths}
+          </span>
+
+          <div className="flex items-center gap-5">
             <Link
               href="https://www.linkedin.com/in/victor-potenciano-9a29392a4/"
-              className="hover:scale-110 transition-transform duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-accent hover:-translate-y-0.5 transition-all duration-300"
             >
-              <Linkedin className="w-8 h-8 opacity-80 hover:opacity-100" />
+              <Linkedin className="w-5 h-5" />
             </Link>
             <Link
               href="https://github.com/VictorPotenciano"
-              className="hover:scale-110 transition-transform duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-accent hover:-translate-y-0.5 transition-all duration-300"
             >
-              <Github className="w-8 h-8 opacity-80 hover:opacity-100" />
+              <Github className="w-5 h-5" />
             </Link>
             <Link
               href="https://wa.me/+34660529420"
               aria-label={t.home.whatsappAlt}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:scale-110 transition-transform duration-300"
+              className="text-muted hover:text-accent hover:-translate-y-0.5 transition-all duration-300"
             >
-              <FontAwesomeIcon
-                icon={faWhatsapp}
-                className="w-8 h-8 opacity-80 hover:opacity-100"
-                style={{ fontSize: "2rem" }}
-              />
+              <FontAwesomeIcon icon={faWhatsapp} className="w-5 h-5" />
             </Link>
           </div>
-          <p className="text-white">
-            Copyright © {new Date().getFullYear()}. {t.footer.rigths}
-          </p>
         </div>
       </div>
     </footer>

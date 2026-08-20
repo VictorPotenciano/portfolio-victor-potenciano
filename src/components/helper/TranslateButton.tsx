@@ -12,7 +12,7 @@ const TranslateButton = () => {
       variant="ghost"
       size="icon"
       onClick={toggleLanguage}
-      className="fixed right-4 top-4 z-50 bg-white/10 backdrop-blur-sm rounded-full p-2 hover:bg-white/20 cursor-pointer hover:transform hover:scale-150 duration-300 transition-all"
+      className="static z-50 bg-surface border border-line rounded-full p-2 hover:border-accent/60 hover:bg-surface-hover cursor-pointer hover:scale-110 duration-300 transition-all"
       aria-label="Toggle language"
     >
       {language === "es" ? (
